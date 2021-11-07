@@ -10,6 +10,7 @@ contract Ballot{
     struct Voter{
         bool voted;
         uint256 vote; // Proposal number
+        uint256 weight;
     }
     
     struct Proposal{
@@ -57,6 +58,8 @@ contract Ballot{
             "voter already voted"
             );
             
+            require((voters[voter].weight==0));
+            voters[voter].weight=1;
         
     }
     
@@ -67,6 +70,9 @@ contract Ballot{
         require(
             !sender.voted,"already voted"
             );
+        
+        require(sender.weight != 0, "Has no right to vote");
+        
         sender.voted = true;
         sender.vote = proposal;
         
@@ -87,6 +93,6 @@ contract Ballot{
     
 function winName()public view returns(string memory){
     return proposals[winningProposal()].name;
-} 
-    
+}
+        
 }
