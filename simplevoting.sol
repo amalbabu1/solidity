@@ -87,37 +87,6 @@ contract Ballot{
     
 function winName()public view returns(string memory){
     return proposals[winningProposal()].name;
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+} 
     
 }
